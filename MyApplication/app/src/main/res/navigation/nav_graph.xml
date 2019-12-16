@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/starterFragment">
+
+    <fragment
+        android:id="@+id/starterFragment"
+        android:name="com.example.myapplication.fragments.StarterFragment"
+        android:label="fragment_starter"
+        tools:layout="@layout/fragment_starter" >
+        <action
+            android:id="@+id/action_starterFragment_to_magicwords"
+            app:destination="@id/magicwords" />
+        <action
+            android:id="@+id/action_starterFragment_to_magicwands"
+            app:destination="@id/magicwands" />
+        <action
+            android:id="@+id/action_starterFragment_to_magicbattle"
+            app:destination="@id/magicbattle" />
+    </fragment>
+    <fragment
+        android:id="@+id/magicwords"
+        android:name="com.example.myapplication.fragments.Magicwords"
+        android:label="fragment_magicwords"
+        tools:layout="@layout/fragment_magicwords" >
+        <action
+            android:id="@+id/action_magicwords_to_magicbattle"
+            app:destination="@id/magicbattle" />
+    </fragment>
+    <fragment
+        android:id="@+id/magicwands"
+        android:name="com.example.myapplication.fragments.Magicwands"
+        android:label="fragment_magicwands"
+        tools:layout="@layout/fragment_magicwands" >
+        <action
+            android:id="@+id/action_magicwands_to_magicbattle"
+            app:destination="@id/magicbattle" />
+    </fragment>
+    <fragment
+        android:id="@+id/magicbattle"
+        android:name="com.example.myapplication.fragments.Magicbattle"
+        android:label="fragment_magicbattle"
+        tools:layout="@layout/fragment_magicbattle" />
+</navigation>
