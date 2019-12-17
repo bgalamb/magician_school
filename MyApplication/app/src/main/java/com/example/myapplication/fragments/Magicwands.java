@@ -2,6 +2,8 @@ package com.example.myapplication.fragments;
 
 
 import android.app.Activity;
+import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -32,6 +34,24 @@ public class Magicwands extends Fragment implements View.OnClickListener {
     private WandsFragmentCollectionAdapter adapter;
     private FragmentActivity myContext;
     private Button button_useit;
+    private Magicwands.OnFragmentInteractionListener mListener;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof Magicwands.OnFragmentInteractionListener) {
+            mListener = (Magicwands.OnFragmentInteractionListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,7 +71,6 @@ public class Magicwands extends Fragment implements View.OnClickListener {
         button_useit.setOnClickListener(this);
     }
 
-
     public Magicwands() {
         // Required empty public constructor
     }
@@ -60,10 +79,17 @@ public class Magicwands extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_usewand:
-                Navigation.findNavController(v).navigate(MagicwandsDirections.actionMagicwandsToMagicbattle());
+                if (mListener != null) {
+                    mListener.onFragmentInteraction("wand no:"+(viewPager.getCurrentItem()+1));
+                }
                 break;
             default:
                 break;
         }
+    }
+
+    //interface to communicate with activity
+    public interface OnFragmentInteractionListener {
+        void onFragmentInteraction(String wandID);
     }
 }

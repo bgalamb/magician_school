@@ -11,7 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
+import com.example.myapplication.MainActivity;
 import com.example.myapplication.R;
 
 /**
@@ -22,6 +24,7 @@ public class StarterFragment extends Fragment implements View.OnClickListener {
     private Button button_wand;
     private Button button_word;
     private Button button_battle;
+    private TextView wandID;
 
     public StarterFragment() {
         // Required empty public constructor
@@ -46,6 +49,9 @@ public class StarterFragment extends Fragment implements View.OnClickListener {
 
         button_battle = view.findViewById(R.id.button_battle);
         button_battle.setOnClickListener(this);
+
+        wandID = view.findViewById(R.id.wandID);
+        wandID.setText(((MainActivity)getActivity()).getWandId());
     }
 
     @Override

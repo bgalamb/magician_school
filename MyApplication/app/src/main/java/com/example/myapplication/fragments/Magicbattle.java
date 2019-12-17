@@ -17,11 +17,13 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.myapplication.MainActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.calculus.Levenstein;
 import com.example.myapplication.loader.LocalJsonLoader;
@@ -53,6 +55,7 @@ public class Magicbattle extends Fragment implements SensorEventListener {
 
     private String magicWord = "";
     private ImageButton bigButton;
+    private TextView magicwand;
 
 
     public Magicbattle() {
@@ -76,6 +79,8 @@ public class Magicbattle extends Fragment implements SensorEventListener {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         bigButton = view.findViewById(R.id.recordButton);
+        magicwand = view.findViewById(R.id.battlewand);
+        magicwand.setText(((MainActivity)getActivity()).getWandId());
 
         initSensors();
         initBigButton();

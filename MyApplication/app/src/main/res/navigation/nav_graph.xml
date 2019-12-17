@@ -33,11 +33,7 @@
         android:id="@+id/magicwands"
         android:name="com.example.myapplication.fragments.Magicwands"
         android:label="fragment_magicwands"
-        tools:layout="@layout/fragment_magicwands" >
-        <action
-            android:id="@+id/action_magicwands_to_magicbattle"
-            app:destination="@id/magicbattle" />
-    </fragment>
+        tools:layout="@layout/fragment_magicwands" />
     <fragment
         android:id="@+id/magicbattle"
         android:name="com.example.myapplication.fragments.Magicbattle"
