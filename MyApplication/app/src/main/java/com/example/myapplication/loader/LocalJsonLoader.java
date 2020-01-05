@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.example.myapplication.calculus.Levenstein;
+import com.example.myapplication.datatype.MagicWordWrapper;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -54,6 +55,7 @@ public class LocalJsonLoader {
     }
 
     public static List<double[]> getStickAccelerationSamplesByAxis(String magicWord, String axis){
+        Log.i(TAG,"Entered stick acceleration with magicWord: "+magicWord);
         List<double[]> retVal = new ArrayList<>();
         try {
             if (!STICK_ACCELERTION_SAMPLE_DATA_JSON.has(magicWord) ){
@@ -79,6 +81,25 @@ public class LocalJsonLoader {
             ex.printStackTrace();
         }
         return retVal;
+    }
+
+    public static List<MagicWordWrapper> getMagicWords(){
+        List<MagicWordWrapper> magicWords = new ArrayList();
+        Iterator<String> it = STICK_ACCELERTION_SAMPLE_DATA_JSON.keys();
+        try{
+            while (it.hasNext()) {
+                String key = it.next();
+                JSONObject curentWordJson = STICK_ACCELERTION_SAMPLE_DATA_JSON.getJSONObject(key);
+                magicWords.add(new MagicWordWrapper(key,curentWordJson.getString("title"), curentWordJson.getString("description")));
+            }
+        }catch(Exception e){
+            //returning all possible values
+        }
+        return magicWords;
+    }
+
+    public static int getMagicNum(){
+        return STICK_ACCELERTION_SAMPLE_DATA_JSON.length();
     }
 
     //TODO handle difference

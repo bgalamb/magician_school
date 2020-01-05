@@ -1,18 +1,16 @@
 package com.example.myapplication;
 
-import com.example.myapplication.calculus.KMPStringCalc;
+import com.example.myapplication.datatype.MagicWordWrapper;
 import com.example.myapplication.loader.LocalJsonLoader;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.List;
 
 public class JsonTest {
@@ -30,36 +28,51 @@ public class JsonTest {
         return sb.toString();
     }
 
+    @Before
+    public void setUp() throws Exception{
+        LocalJsonLoader.initStickAccelerationDataJSON(readJsonFile(LocalJsonLoader.LOCAL_JSON_FILE_NAME));
+    }
+
     @Test
-    public void testJsonReadingValidWord() throws Exception {
+    public void testJsonReadingValidWord()  {
         String magicWord = "abrakadabra";
         String axis = "x";
-
-        LocalJsonLoader.initStickAccelerationDataJSON(readJsonFile(LocalJsonLoader.LOCAL_JSON_FILE_NAME));
         List<double[]> retVal = LocalJsonLoader.getStickAccelerationSamplesByAxis(magicWord,axis);
-
         Assert.assertEquals(retVal.size(),4);
     }
 
     @Test
-    public void testJsonReadingInvalidWord() throws Exception {
+    public void testJsonReadingInvalidWord() {
         String magicWord = "abrakadablo";
         String axis = "x";
-
-        LocalJsonLoader.initStickAccelerationDataJSON(readJsonFile(LocalJsonLoader.LOCAL_JSON_FILE_NAME));
         List<double[]> retVal = LocalJsonLoader.getStickAccelerationSamplesByAxis(magicWord,axis);
-
         Assert.assertEquals(retVal.size(),0);
     }
 
     @Test
-    public void testJsonReadingSimilarWord() throws Exception {
+    public void testJsonReadingSimilarWord() {
         String magicWord = "abrakadabro";
         String axis = "x";
-
-        LocalJsonLoader.initStickAccelerationDataJSON(readJsonFile(LocalJsonLoader.LOCAL_JSON_FILE_NAME));
         String retVal = LocalJsonLoader.getSimilarWord(magicWord,1);
-
         Assert.assertEquals(retVal,"abrakadabra");
     }
+
+    @Test
+    public void testJsonReadingValidWordSize()  {
+        Assert.assertEquals(LocalJsonLoader.getMagicNum(),2);
+    }
+
+    @Test
+    public void testJsonReadingAllWords()  {
+        Assert.assertEquals(LocalJsonLoader.getMagicWords(),2);
+    }
+
+    @Test
+    public void testJsonReadingDetailsForWord()  {
+        List<MagicWordWrapper> results = LocalJsonLoader.getMagicWords();
+        Assert.assertEquals(results.get(0).getMagicWordKey(),"lumus");
+        Assert.assertEquals(results.get(0).getMagicWordTitle(),"Lumus");
+    }
+
+
 }

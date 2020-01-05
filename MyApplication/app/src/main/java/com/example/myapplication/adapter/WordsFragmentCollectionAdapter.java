@@ -7,7 +7,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import com.example.myapplication.fragments.DemoFragment;
+import com.example.myapplication.fragments.MagicWordsFragment;
+import com.example.myapplication.loader.LocalJsonLoader;
 
 public class WordsFragmentCollectionAdapter extends FragmentStatePagerAdapter {
 
@@ -19,10 +20,10 @@ public class WordsFragmentCollectionAdapter extends FragmentStatePagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        DemoFragment demoFragment = new DemoFragment();
+        MagicWordsFragment demoFragment = new MagicWordsFragment();
         Bundle bundle = new Bundle();
-        position = position + 1;
-        bundle.putString("message","This is magic word # "+position);
+        bundle.putString("title",LocalJsonLoader.getMagicWords().get(position).getMagicWordTitle());
+        bundle.putString("description",LocalJsonLoader.getMagicWords().get(position).getMagicWordDescription());
         demoFragment.setArguments(bundle);
 
         return demoFragment;
@@ -30,11 +31,11 @@ public class WordsFragmentCollectionAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return 100;
+        return LocalJsonLoader.getMagicWords().size();
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return "OBJECT " + (position + 1);
+        return "OBJECT " + (position);
     }
 }

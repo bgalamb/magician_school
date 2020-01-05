@@ -7,10 +7,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import com.example.myapplication.fragments.DemoFragment;
+import com.example.myapplication.MainActivity;
+import com.example.myapplication.fragments.MagicWandsFragment;
 
 public class WandsFragmentCollectionAdapter extends FragmentStatePagerAdapter {
 
+    private int currImage = 0;
 
     public WandsFragmentCollectionAdapter(@NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);
@@ -19,22 +21,22 @@ public class WandsFragmentCollectionAdapter extends FragmentStatePagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        DemoFragment demoFragment = new DemoFragment();
+        MagicWandsFragment magicWandsFragment = new MagicWandsFragment();
         Bundle bundle = new Bundle();
-        position = position + 1;
-        bundle.putString("message","This is magic wand #  "+position);
-        demoFragment.setArguments(bundle);
+        bundle.putString("message",position+"");
+        bundle.putString("default",MainActivity.selectedMagicWand+"");
+        magicWandsFragment.setArguments(bundle);
 
-        return demoFragment;
+        return magicWandsFragment;
     }
 
     @Override
     public int getCount() {
-        return 100;
+        return MainActivity.images.length;
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return "OBJECT " + (position + 1);
+        return "OBJECT " + (position);
     }
 }

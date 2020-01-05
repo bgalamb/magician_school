@@ -22,18 +22,18 @@
     </fragment>
     <fragment
         android:id="@+id/magicwords"
-        android:name="com.example.myapplication.fragments.Magicwords"
+        android:name="com.example.myapplication.fragments.MagicwordsFragmentAdapter"
         android:label="fragment_magicwords"
-        tools:layout="@layout/fragment_magicwords" >
+        tools:layout="@layout/fragment_magicwords_pager" >
         <action
             android:id="@+id/action_magicwords_to_magicbattle"
             app:destination="@id/magicbattle" />
     </fragment>
     <fragment
         android:id="@+id/magicwands"
-        android:name="com.example.myapplication.fragments.Magicwands"
+        android:name="com.example.myapplication.fragments.MagicwandsFragmentAdapter"
         android:label="fragment_magicwands"
-        tools:layout="@layout/fragment_magicwands" />
+        tools:layout="@layout/fragment_magicwands_pager" />
     <fragment
         android:id="@+id/magicbattle"
         android:name="com.example.myapplication.fragments.Magicbattle"

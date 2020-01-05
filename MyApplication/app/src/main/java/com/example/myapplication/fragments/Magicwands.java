@@ -1,16 +1,14 @@
 package com.example.myapplication.fragments;
 
 
-import android.app.Activity;
 import android.content.Context;
-import android.net.Uri;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.navigation.Navigation;
 import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
@@ -29,18 +27,17 @@ import static androidx.fragment.app.FragmentStatePagerAdapter.BEHAVIOR_RESUME_ON
  */
 public class Magicwands extends Fragment implements View.OnClickListener {
 
-
     private ViewPager viewPager;
     private WandsFragmentCollectionAdapter adapter;
     private FragmentActivity myContext;
     private Button button_useit;
-    private Magicwands.OnFragmentInteractionListener mListener;
+    private Magicwands.OnWandFragmentInteractionListener mListener;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof Magicwands.OnFragmentInteractionListener) {
-            mListener = (Magicwands.OnFragmentInteractionListener) context;
+        if (context instanceof Magicwands.OnWandFragmentInteractionListener) {
+            mListener = (Magicwands.OnWandFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -57,7 +54,7 @@ public class Magicwands extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_magicwands, container, false);
+        return inflater.inflate(R.layout.fragment_magicwands_pager, container, false);
     }
 
 
@@ -69,6 +66,9 @@ public class Magicwands extends Fragment implements View.OnClickListener {
 
         button_useit = view.findViewById(R.id.button_usewand);
         button_useit.setOnClickListener(this);
+
+        view.setBackgroundColor(Color.parseColor("#f2f2f2"));
+
     }
 
     public Magicwands() {
@@ -80,7 +80,7 @@ public class Magicwands extends Fragment implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.button_usewand:
                 if (mListener != null) {
-                    mListener.onFragmentInteraction("wand no:"+(viewPager.getCurrentItem()+1));
+                    mListener.onSelectWandInteraction (viewPager.getCurrentItem());
                 }
                 break;
             default:
@@ -89,7 +89,7 @@ public class Magicwands extends Fragment implements View.OnClickListener {
     }
 
     //interface to communicate with activity
-    public interface OnFragmentInteractionListener {
-        void onFragmentInteraction(String wandID);
+    public interface OnWandFragmentInteractionListener {
+        void onSelectWandInteraction(int wandID);
     }
 }

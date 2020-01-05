@@ -1,13 +1,11 @@
 package com.example.myapplication.fragments;
 
 
-import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.navigation.Navigation;
 import androidx.viewpager.widget.ViewPager;
 
@@ -39,7 +37,7 @@ public class Magicwords extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_magicwords, container, false);
+        return inflater.inflate(R.layout.fragment_magicwords_pager, container, false);
     }
 
     @Override
@@ -50,6 +48,8 @@ public class Magicwords extends Fragment implements View.OnClickListener {
 
         button_useit = view.findViewById(R.id.button_useword);
         button_useit.setOnClickListener(this);
+
+        view.setBackground(getResources().getDrawable(R.drawable.vintagepaper));
 
     }
 

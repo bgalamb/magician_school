@@ -5,12 +5,10 @@
             <solid android:color="@color/colorButton" />
         </shape>
     </item>
-
     <item
         android:bottom="20dp"
-        android:drawable="@drawable/icon_record"
+        android:drawable="@drawable/fingerprint2"
         android:left="20dp"
         android:right="20dp"
         android:top="20dp" />
-
 </layer-list>
