@@ -23,13 +23,13 @@ import static androidx.fragment.app.FragmentStatePagerAdapter.BEHAVIOR_RESUME_ON
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MagicwordsFragmentAdapter extends Fragment implements View.OnClickListener {
+public class MagicWordsFragmentAdapter extends Fragment implements View.OnClickListener {
 
     private ViewPager viewPager;
     private WordsFragmentCollectionAdapter adapter;
     private Button button_useit;
 
-    public MagicwordsFragmentAdapter() {
+    public MagicWordsFragmentAdapter() {
         // Required empty public constructor
     }
 
@@ -57,7 +57,7 @@ public class MagicwordsFragmentAdapter extends Fragment implements View.OnClickL
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_useword:
-                Navigation.findNavController(v).navigate(MagicwordsFragmentAdapterDirections.actionMagicwordsToMagicbattle());
+                Navigation.findNavController(v).navigate(MagicWordsFragmentAdapterDirections.actionMagicwordsToMagicbattle());
                 break;
             default:
                 break;

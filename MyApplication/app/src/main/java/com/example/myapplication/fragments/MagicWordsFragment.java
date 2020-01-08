@@ -42,7 +42,6 @@ public class MagicWordsFragment extends Fragment {
 
         final TextView spell = (TextView) view.findViewById(R.id.textView);
         spell.setText(description);
-
     }
 
 }

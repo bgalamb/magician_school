@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.MagicwandsFragmentAdapter">
+    tools:context=".fragments.MagicWandsFragmentAdapter">
 
     <!-- TODO: Update blank fragment layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,8 +31,9 @@
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:layout_marginBottom="10dp"
-            android:fontFamily="cursive"
+            android:fontFamily="sans-serif-black"
             android:text="Select"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
@@ -44,6 +45,7 @@
             android:id="@+id/wandHint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

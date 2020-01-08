@@ -4,14 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.content.SharedPreferences;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.example.myapplication.fragments.Magicbattle;
-import com.example.myapplication.fragments.MagicwandsFragmentAdapter;
+import com.example.myapplication.fragments.MagicBattleFragment;
+import com.example.myapplication.fragments.MagicWandsFragmentAdapter;
 import com.example.myapplication.loader.LocalJsonLoader;
 
-public class MainActivity extends AppCompatActivity implements MagicwandsFragmentAdapter.OnWandFragmentInteractionListener, Magicbattle.OnBattleFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements MagicWandsFragmentAdapter.OnWandFragmentInteractionListener, MagicBattleFragment.OnBattleFragmentInteractionListener {
     private static final String TAG = "MyActivity";
 
     public static int selectedMagicWand = 0;
@@ -69,5 +70,13 @@ public class MainActivity extends AppCompatActivity implements MagicwandsFragmen
 
     }
 
+//    private void getBitmapdata() {
+//        BitmapFactory.Options options = new BitmapFactory.Options();
+//        options.inJustDecodeBounds = true;
+//        BitmapFactory.decodeResource(getResources(), R.id.myimage, options);
+//        int imageHeight = options.outHeight;
+//        int imageWidth = options.outWidth;
+//        String imageType = options.outMimeType;
+//    }
 
 }

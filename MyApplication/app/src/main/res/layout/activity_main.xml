@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".MainActivity">
+    android:background="@drawable/witch"
+    tools:context=".MainActivity"
+    android:textColor="@android:color/holo_orange_dark">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -15,8 +17,11 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="5dp"
         android:layout_weight="1"
+        android:fontFamily="sans-serif"
         android:gravity="right"
         android:text="Wand"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,18 +33,21 @@
         android:layout_marginTop="5dp"
         android:gravity="left"
         android:text="wandID"
+        android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/wandLabel"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/pointsLabel"
-        android:layout_width="41dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="24dp"
         android:layout_weight="1"
         android:gravity="right"
         android:text="Points"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/points"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -51,6 +59,7 @@
         android:layout_marginEnd="24dp"
         android:gravity="left"
         android:text="0"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

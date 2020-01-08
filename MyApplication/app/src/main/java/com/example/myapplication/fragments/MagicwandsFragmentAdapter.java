@@ -2,7 +2,6 @@ package com.example.myapplication.fragments;
 
 
 import android.content.Context;
-import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -27,20 +26,20 @@ import static androidx.fragment.app.FragmentStatePagerAdapter.BEHAVIOR_RESUME_ON
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MagicwandsFragmentAdapter extends Fragment implements View.OnClickListener , ViewPager.OnPageChangeListener {
+public class MagicWandsFragmentAdapter extends Fragment implements View.OnClickListener , ViewPager.OnPageChangeListener {
 
     private static final String TAG = "MyActivityPager";
     private ViewPager viewPager;
     private WandsFragmentCollectionAdapter adapter;
     private Button button_useit;
     private TextView wandHint;
-    private MagicwandsFragmentAdapter.OnWandFragmentInteractionListener mListener;
+    private MagicWandsFragmentAdapter.OnWandFragmentInteractionListener mListener;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof MagicwandsFragmentAdapter.OnWandFragmentInteractionListener) {
-            mListener = (MagicwandsFragmentAdapter.OnWandFragmentInteractionListener) context;
+        if (context instanceof MagicWandsFragmentAdapter.OnWandFragmentInteractionListener) {
+            mListener = (MagicWandsFragmentAdapter.OnWandFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -73,8 +72,6 @@ public class MagicwandsFragmentAdapter extends Fragment implements View.OnClickL
         button_useit = view.findViewById(R.id.button_usewand);
         button_useit.setOnClickListener(this);
 
-        view.setBackgroundColor(Color.parseColor("#f2f2f2"));
-
         if ( viewPager.getCurrentItem() == MainActivity.selectedMagicWand){
             button_useit.setVisibility(View.INVISIBLE);
         }else{
@@ -83,7 +80,7 @@ public class MagicwandsFragmentAdapter extends Fragment implements View.OnClickL
 
     }
 
-    public MagicwandsFragmentAdapter() {
+    public MagicWandsFragmentAdapter() {
         // Required empty public constructor
     }
 

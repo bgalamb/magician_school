@@ -54,7 +54,20 @@ public class LocalJsonLoader {
         }
     }
 
-    public static List<double[]> getStickAccelerationSamplesByAxis(String magicWord, String axis){
+    public static int getMagicPower(String magicWord) {
+        Log.i(TAG, "Entered getmagicpower with magicWord: " + magicWord);
+        int retVal = 0;
+        try {
+            if (STICK_ACCELERTION_SAMPLE_DATA_JSON.has(magicWord)) {
+                retVal = Integer.parseInt(STICK_ACCELERTION_SAMPLE_DATA_JSON.getJSONObject(magicWord).getString("power"));
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        return retVal;
+    }
+
+                public static List<double[]> getStickAccelerationSamplesByAxis(String magicWord, String axis){
         Log.i(TAG,"Entered stick acceleration with magicWord: "+magicWord);
         List<double[]> retVal = new ArrayList<>();
         try {
@@ -90,7 +103,7 @@ public class LocalJsonLoader {
             while (it.hasNext()) {
                 String key = it.next();
                 JSONObject curentWordJson = STICK_ACCELERTION_SAMPLE_DATA_JSON.getJSONObject(key);
-                magicWords.add(new MagicWordWrapper(key,curentWordJson.getString("title"), curentWordJson.getString("description")));
+                magicWords.add(new MagicWordWrapper(key,curentWordJson.getString("title"), curentWordJson.getString("description"),curentWordJson.getString("power") ));
             }
         }catch(Exception e){
             //returning all possible values
@@ -102,16 +115,4 @@ public class LocalJsonLoader {
         return STICK_ACCELERTION_SAMPLE_DATA_JSON.length();
     }
 
-    //TODO handle difference
-    public static String getSimilarWord(String wordCandidate,int difference){
-
-        TreeMap<Integer,String> distancesTree = new TreeMap<>();
-        Iterator<String> it = STICK_ACCELERTION_SAMPLE_DATA_JSON.keys();
-        while (it.hasNext()) {
-            String word = it.next();
-            distancesTree.put(Levenstein.characterDistance(wordCandidate,word),word);
-        }
-
-        return distancesTree.firstEntry().getValue();
-    }
 }

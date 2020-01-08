@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.StarterFragment">
+    tools:context=".fragments.StarterFragment"
+   >
 
     <!-- TODO: Update blank fragment layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -62,6 +63,8 @@
             android:fontFamily="cursive"
             android:gravity="center"
             android:text="Become the best wizard. Keep practicing the movements and words to collect magic points."
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

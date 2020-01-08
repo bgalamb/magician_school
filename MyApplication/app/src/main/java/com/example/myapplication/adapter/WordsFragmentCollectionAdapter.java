@@ -22,7 +22,7 @@ public class WordsFragmentCollectionAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         MagicWordsFragment demoFragment = new MagicWordsFragment();
         Bundle bundle = new Bundle();
-        bundle.putString("title",LocalJsonLoader.getMagicWords().get(position).getMagicWordTitle());
+        bundle.putString("title",LocalJsonLoader.getMagicWords().get(position).getMagicWordTitle()+"("+LocalJsonLoader.getMagicWords().get(position).getMagicWordPower()+")");
         bundle.putString("description",LocalJsonLoader.getMagicWords().get(position).getMagicWordDescription());
         demoFragment.setArguments(bundle);
 

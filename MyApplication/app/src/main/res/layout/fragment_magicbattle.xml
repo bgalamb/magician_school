@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.Magicbattle">
+    tools:context=".fragments.MagicBattleFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,10 +16,11 @@
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_marginTop="56dp"
-            android:fontFamily="cursive"
+            android:fontFamily="sans-serif"
             android:gravity="center"
-            android:text="you said..."
+            android:text="You said..."
             android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
@@ -29,10 +30,11 @@
             android:id="@+id/successful"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="cursive"
+            android:fontFamily="sans-serif"
             android:gravity="center"
             android:text="magic successful?"
             android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -62,7 +64,8 @@
             android:layout_marginBottom="32dp"
             android:fontFamily="cursive"
             android:gravity="center"
-            android:text="Your device is your magic wand. Hold it in your hand and do the movement with it as the instructions says. You need to pushe the button when you start and release it when finished. Dont forget to say the magic word"
+            android:text="Your device is your magic wand. Hold it in your hand and do the movement with it as the instructions says. You need to push the button when you start and release it when finished. Dont forget to say the magic word"
+            android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/recordButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
