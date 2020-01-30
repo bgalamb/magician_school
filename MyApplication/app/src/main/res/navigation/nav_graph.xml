@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/starterFragment"
-        android:name="com.example.myapplication.fragments.StarterFragment"
+        android:name="com.magic.wand.fragments.StarterFragment"
         android:label="fragment_starter"
         tools:layout="@layout/fragment_starter" >
         <action
@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/magicwords"
-        android:name="com.example.myapplication.fragments.MagicWordsFragmentAdapter"
+        android:name="com.magic.wand.fragments.MagicWordsFragmentAdapter"
         android:label="fragment_magicwords"
         tools:layout="@layout/fragment_magicwords_pager" >
         <action
@@ -31,12 +31,12 @@
     </fragment>
     <fragment
         android:id="@+id/magicwands"
-        android:name="com.example.myapplication.fragments.MagicWandsFragmentAdapter"
+        android:name="com.magic.wand.fragments.MagicWandsFragmentAdapter"
         android:label="fragment_magicwands"
         tools:layout="@layout/fragment_magicwands_pager" />
     <fragment
         android:id="@+id/magicbattle"
-        android:name="com.example.myapplication.fragments.MagicBattleFragment"
+        android:name="com.magic.wand.fragments.MagicBattleFragment"
         android:label="fragment_magicbattle"
         tools:layout="@layout/fragment_magicbattle" />
 </navigation>

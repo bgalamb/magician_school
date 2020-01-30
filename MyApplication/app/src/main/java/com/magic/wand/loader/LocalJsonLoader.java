@@ -1,0 +1,113 @@
+package com.magic.wand.loader;
+
+import android.content.Context;
+import android.util.Log;
+
+import com.magic.wand.datatype.MagicWordWrapper;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class LocalJsonLoader {
+
+    public static final String LOCAL_JSON_FILE_NAME = "file_name.json";
+    protected static String JSON_AS_STRING = null;
+    private static final String TAG = "MyActivity";
+
+    private static JSONObject STICK_ACCELERTION_SAMPLE_DATA_JSON = null;
+
+    public static void initStickAccelerationDataJSON(Context context) {
+        if (JSON_AS_STRING == null) {
+            try {
+                InputStream is = context.getAssets().open(LOCAL_JSON_FILE_NAME);
+                int size = is.available();
+                byte[] buffer = new byte[size];
+                is.read(buffer);
+                is.close();
+                JSON_AS_STRING = new String(buffer, "UTF-8");
+                STICK_ACCELERTION_SAMPLE_DATA_JSON = new JSONObject(JSON_AS_STRING);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+        Log.i(TAG,"JSON initialized.");
+    }
+
+    public static void initStickAccelerationDataJSON(String jsonString) {
+        if (JSON_AS_STRING == null) {
+            try {
+                JSON_AS_STRING = jsonString;
+                STICK_ACCELERTION_SAMPLE_DATA_JSON = new JSONObject(JSON_AS_STRING);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
+    public static int getMagicPower(String magicWord) {
+        Log.i(TAG, "Entered getmagicpower with magicWord: " + magicWord);
+        int retVal = 0;
+        try {
+            if (STICK_ACCELERTION_SAMPLE_DATA_JSON.has(magicWord)) {
+                retVal = Integer.parseInt(STICK_ACCELERTION_SAMPLE_DATA_JSON.getJSONObject(magicWord).getString("power"));
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        return retVal;
+    }
+
+                public static List<double[]> getStickAccelerationSamplesByAxis(String magicWord, String axis){
+        Log.i(TAG,"Entered stick acceleration with magicWord: "+magicWord);
+        List<double[]> retVal = new ArrayList<>();
+        try {
+            if (!STICK_ACCELERTION_SAMPLE_DATA_JSON.has(magicWord) ){
+
+                //TODO go on with a valid word which is very similar to the expected one
+                //getSimilarWord();
+                Log.i(TAG,"word not found in JSON returning");
+
+                return retVal;
+            }
+            JSONArray stickAccelerationsByWordAndAxis = STICK_ACCELERTION_SAMPLE_DATA_JSON.getJSONObject(magicWord).getJSONArray(axis);
+            Log.i(TAG,"stickAccelerationsByWordAndAxis size="+stickAccelerationsByWordAndAxis.length());
+            for (int i = 0; i < stickAccelerationsByWordAndAxis.length(); i++) {
+               Log.i(TAG,"i is "+i);
+                JSONArray accelerationDataJson = stickAccelerationsByWordAndAxis.getJSONArray(i);
+                double[] sampleAccelerationData = new double[accelerationDataJson.length()];
+                for (int j = 0; j < accelerationDataJson.length(); j++) {
+                    sampleAccelerationData[j] = Double.parseDouble(accelerationDataJson.get(j).toString());
+                }
+                retVal.add(sampleAccelerationData);
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        return retVal;
+    }
+
+    public static List<MagicWordWrapper> getMagicWords(){
+        List<MagicWordWrapper> magicWords = new ArrayList();
+        Iterator<String> it = STICK_ACCELERTION_SAMPLE_DATA_JSON.keys();
+        try{
+            while (it.hasNext()) {
+                String key = it.next();
+                JSONObject curentWordJson = STICK_ACCELERTION_SAMPLE_DATA_JSON.getJSONObject(key);
+                magicWords.add(new MagicWordWrapper(key,curentWordJson.getString("title"), curentWordJson.getString("description"),curentWordJson.getString("power") ));
+            }
+        }catch(Exception e){
+            //returning all possible values
+        }
+        return magicWords;
+    }
+
+    public static int getMagicNum(){
+        return STICK_ACCELERTION_SAMPLE_DATA_JSON.length();
+    }
+
+}

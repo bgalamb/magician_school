@@ -11,6 +11,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/wandhand"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
         <TextView
             android:id="@+id/hearedword"
             android:layout_width="wrap_content"
@@ -50,10 +62,10 @@
             android:background="@drawable/button_background"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.52"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.903" />
+            app:layout_constraintVertical_bias="0.889" />
 
         <TextView
             android:id="@+id/textView6"
@@ -64,7 +76,7 @@
             android:layout_marginBottom="32dp"
             android:fontFamily="cursive"
             android:gravity="center"
-            android:text="Your device is your magic wand. Hold it in your hand and do the movement with it as the instructions says. You need to push the button when you start and release it when finished. Dont forget to say the magic word"
+            android:text="Press the button and wait the feedback sound. Keep the button pressed and do the movement and say the spell. Release the button when finished."
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/recordButton"
             app:layout_constraintEnd_toEndOf="parent"
